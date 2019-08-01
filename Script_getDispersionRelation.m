@@ -1,7 +1,7 @@
 addpath("./DERIVESTsuite");
 addpath("./PC-SAFT");
-p = parpool('local', 16);
-p.IdleTimeout = 120;
+%p = parpool('local', 16);
+%p.IdleTimeout = 120;
 %% Baseflow
 N = 800;
 P_Pc = 1.18;
@@ -9,7 +9,7 @@ Ma = 0.5;
 y_pb = 0;
 paramArray = initParam(P_Pc, Ma, y_pb);
 baseFlowArray = Calc_BaseFlow_Nodes(N, paramArray);
-save Baseflow_800.mat baseFlowArray;
+save Baseflow_800_0.mat baseFlowArray;
 %% Stability
 res = 100;
 alpha_vec = linspace(0, 1.3, res)';
@@ -21,17 +21,17 @@ parfor i=1:res
     fprintf('omega_i = %.4g \n omega_r = %.4g \n', omega_i_max_vec(i), omega_r_vec(i));
 end
 
-figure;
-plot(alpha_vec, omega_i_max_vec);
-ylim([0 inf]);
-ylabel('\omega_i');
-xlabel('\alpha');
-title(sprintf('Re = %.4g, N = %d', Rey, N));
+%figure;
+%plot(alpha_vec, omega_i_max_vec);
+%ylim([0 inf]);
+%ylabel('\omega_i');
+%xlabel('\alpha');
+%title(sprintf('Re = %.4g, N = %d', Rey, N));
 
-figure;
-plot(alpha_vec, omega_r_vec./alpha_vec);
-ylabel('\omega_r/\alpha');
-xlabel('\alpha');
-title(sprintf('Re = %.4g, N = %d', Rey, N));
+%figure;
+%plot(alpha_vec, omega_r_vec./alpha_vec);
+%ylabel('\omega_r/\alpha');
+%xlabel('\alpha');
+%title(sprintf('Re = %.4g, N = %d', Rey, N));
 
 save('Dispersion_Pr_1d18_M_0d5_y_0_N_800.mat');
