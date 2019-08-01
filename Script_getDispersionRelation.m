@@ -34,4 +34,4 @@ ylabel('\omega_r/\alpha');
 xlabel('\alpha');
 title(sprintf('Re = %.4g, N = %d', Rey, N));
 
-save('Dispersion_Pr_1d18_M_0d5_y_0.mat');
+save('Dispersion_Pr_1d18_M_0d5_y_0_N_800.mat');

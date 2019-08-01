@@ -14,7 +14,7 @@ function [A,B] = TWO_D_CalcABTemporalCheb(alpha, N, paramArray, baseFlowArray)
 
 % Load Base Flow and Chebychev polynomials and collocation points
 
-load(['Chebyshev_' sprintf('%d', N) '.mat']);
+[xi_vec, D0, D1, D2, ~] = Dmat(N);
 
 A = zeros(5*N, 5*N);
 B = zeros(5*N, 5*N);
