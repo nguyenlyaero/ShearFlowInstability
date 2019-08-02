@@ -1,10 +1,17 @@
 %% Load data
 [T_base, P_ref, rho_ref, Rgas, cp_ref, mu_ref, lambda_ref, Ma, Pr, Rey, h_ref, T_ref, d_ref, Pe] = deal(paramArray{:});
+[u0__x_vec, du0x_dxi_vec, d2u0x_dxidxi_vec,...
+        rho0_vec, drho0_dxi_vec, d2rho0_dxidxi_vec,...
+        T0_vec, dT0_dxi_vec, d2T0_dxidxi_vec, ...
+        Y0_vec, dY0_dxi_vec, d2Y0_dxidxi_vec, ...
+        D12_vec, dD_dT_vec, dD_drho_vec, dD_dY_vec, d2D_dTdT_vec, d2D_dTdrho_vec, d2D_dTdY_vec, d2D_drhodrho_vec, d2D_drhodY_vec, d2D_dYdY_vec,...
+        mu_vec, dmu_dT_vec, dmu_drho_vec, dmu_dY_vec, d2mu_dTdT_vec, d2mu_dTdrho_vec, d2mu_dTdY_vec, d2mu_drhodrho_vec, d2mu_drhodY_vec, d2mu_dYdY_vec, ...
+        P_vec, dp_dT_vec, dp_drho_vec, dp_dY_vec, d2p_dTdT_vec, d2p_dTdrho_vec, d2p_dTdY_vec, d2p_drhodrho_vec, d2p_drhodY_vec, d2p_dYdY_vec, ...
+        h_vec, dh_dT_vec, dh_drho_vec, dh_dY_vec,...
+        lambda_vec, dlambda_dT_vec, dlambda_drho_vec, dlambda_dY_vec, d2lambda_dTdT_vec, d2lambda_dTdrho_vec, d2lambda_dTdY_vec, d2lambda_drhodrho_vec, d2lambda_drhodY_vec, d2lambda_dYdY_vec] = deal(baseFlowArray{:});
 N = 800;
 alpha = 0.58;
-load(['Chebyshev_' sprintf('%d', N) '.mat']);
-load('Baseflow.mat');
-load('data_stability_800.mat');
+[xi_vec, D0, D1, D2, ~] = Dmat(N);
 
 
 %% Plot Eigenspectrum
@@ -17,7 +24,7 @@ ylabel('\omega_i');
 title(sprintf('Re = %.4g, N = %d, alpha = %.4g', Rey, N, alpha));
 
 %% Calculate Profile
-ii = 743;
+ii = 750;
 eigen_vec_i = V(:,ii);
 
 u_profile = zeros(N,1);

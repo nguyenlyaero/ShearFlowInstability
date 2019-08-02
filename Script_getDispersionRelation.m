@@ -8,8 +8,9 @@ P_Pc = 1.18;
 Ma = 0.5;
 y_pb = 0;
 paramArray = initParam(P_Pc, Ma, y_pb);
-baseFlowArray = Calc_BaseFlow_Nodes(N, paramArray);
-save Baseflow_800_0.mat baseFlowArray;
+% baseFlowArray = Calc_BaseFlow_Nodes(N, paramArray);
+% save Baseflow_800_0.mat baseFlowArray;
+load Baseflow_800_0.mat
 %% Stability
 res = 100;
 alpha_vec = linspace(0, 1.3, res)';
